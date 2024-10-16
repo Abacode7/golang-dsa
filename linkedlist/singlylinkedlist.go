@@ -17,14 +17,14 @@ func NewSinglyLinkedList() *SinglyLinkedList {
 	return &SinglyLinkedList{}
 }
 
-/** Todo: getAt, insertAt, removeAt, getHead, getTail, removeHead, removeTail
+/** Todo: GetAt, InsertAt, RemoveAt, GetHead, getTail, removeHead, removeTail
  */
 
-func (r *SinglyLinkedList) getHead() *SNode {
+func (r *SinglyLinkedList) GetHead() *SNode {
 	return r.head
 }
 
-func (r *SinglyLinkedList) getAt(index int) *SNode {
+func (r *SinglyLinkedList) GetAt(index int) *SNode {
 	if r.head == nil {
 		return nil
 	}
@@ -40,7 +40,7 @@ func (r *SinglyLinkedList) getAt(index int) *SNode {
 	return c
 }
 
-func (r *SinglyLinkedList) insertAt(index int, nodeToInsert *SNode) {
+func (r *SinglyLinkedList) InsertAt(index int, nodeToInsert *SNode) {
 	/** Todo: To insert to a position, we need to find the node before that position
 	 */
 	if index == 0 {
@@ -49,7 +49,7 @@ func (r *SinglyLinkedList) insertAt(index int, nodeToInsert *SNode) {
 		return
 	}
 
-	node := r.getAt(index - 1)
+	node := r.GetAt(index - 1)
 	if node != nil {
 		temp := node.next
 		node.next = nodeToInsert
@@ -57,7 +57,7 @@ func (r *SinglyLinkedList) insertAt(index int, nodeToInsert *SNode) {
 	}
 }
 
-func (r *SinglyLinkedList) removeAt(index int) *SNode {
+func (r *SinglyLinkedList) RemoveAt(index int) *SNode {
 	if index == 0 {
 		if r.head != nil {
 			nodeToRemove := r.head
@@ -69,7 +69,7 @@ func (r *SinglyLinkedList) removeAt(index int) *SNode {
 		}
 	}
 
-	node := r.getAt(index - 1)
+	node := r.GetAt(index - 1)
 	if node != nil {
 		nodeToRemove := node.next
 		if nodeToRemove != nil {
