@@ -24,6 +24,8 @@ func (r *SinglyLinkedList) GetHead() *SNode {
 	return r.head
 }
 
+// GetAt is gets value at index
+// O(i) time, where i is the index; O(1) space
 func (r *SinglyLinkedList) GetAt(index int) *SNode {
 	if r.head == nil {
 		return nil
@@ -40,6 +42,8 @@ func (r *SinglyLinkedList) GetAt(index int) *SNode {
 	return c
 }
 
+// InsertAt is gets value at index
+// O(i) time, where i is the index, O(1) extra space
 func (r *SinglyLinkedList) InsertAt(index int, nodeToInsert *SNode) {
 	/** Todo: To insert to a position, we need to find the node before that position
 	 */
@@ -57,6 +61,8 @@ func (r *SinglyLinkedList) InsertAt(index int, nodeToInsert *SNode) {
 	}
 }
 
+// RemoveAt is gets value at index
+// O(i) time, where i is the index, O(1) extra space
 func (r *SinglyLinkedList) RemoveAt(index int) *SNode {
 	if index == 0 {
 		if r.head != nil {
