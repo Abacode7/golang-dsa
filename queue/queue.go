@@ -5,7 +5,7 @@ type Queue struct {
 }
 
 func NewQueue() *Queue {
-	return &Queue{data: make([]interface{}, 10)}
+	return &Queue{data: make([]interface{}, 0)}
 }
 
 func (r *Queue) Enqueue(value interface{}) {

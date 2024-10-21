@@ -1,6 +1,8 @@
 package queue
 
-import "testing"
+import (
+	"testing"
+)
 
 func TestNewQueue(t *testing.T) {
 	queue := NewQueue()
@@ -21,16 +23,16 @@ func TestQueue_Enqueue(t *testing.T) {
 	queue.Enqueue(1)
 	queue.Enqueue("Zebra")
 
-	if queue.Peek() != "Apple" {
-		t.Error("Expected value at the head of queue be Apple, but got: ", queue.Dequeue())
+	if queue.Dequeue() != "Apple" {
+		t.Error("Expected value at the head of queue be Apple")
 	}
 
-	if queue.Peek() != 1 {
-		t.Error("Expected value at the head of queue be 1, but got: ", queue.Dequeue())
+	if queue.Dequeue() != 1 {
+		t.Error("Expected value at the head of queue be 1")
 	}
 
-	if queue.Peek() != "Zebra" {
-		t.Error("Expected value at the head of queue be Zebra, but got: ", queue.Dequeue())
+	if queue.Dequeue() != "Zebra" {
+		t.Error("Expected value at the head of queue be Zebra")
 	}
 }
 
@@ -41,7 +43,7 @@ func TestQueue_Dequeue(t *testing.T) {
 	queue.Enqueue("Dogs")
 
 	value1 := queue.Dequeue()
-	if value1 != "Apple" {
+	if value1 != "Cats" {
 		t.Error("Expected value at the head of queue be Cats, but got: ", value1)
 	}
 
