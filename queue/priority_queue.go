@@ -7,7 +7,7 @@ type PriorityQueue struct {
 }
 
 func NewPriorityQueue() *PriorityQueue {
-	heapStructure := make(MaxHeap, 10)
+	heapStructure := make(MaxHeap, 0)
 	return &PriorityQueue{
 		heap: &heapStructure,
 	}
