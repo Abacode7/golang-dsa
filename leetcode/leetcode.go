@@ -3,7 +3,8 @@ package leetcode
 import "math"
 
 /**
-QUESTION 2138 - Divide a String into groups of size k - Easy
+QUESTION 2138 - Divide a String into groups of size k 
+TAGS: Easy | Array
 
 Input: s = "abcdefghi", k = 3, fill = "x"
 Output: ["abc","def","ghi"]
@@ -35,7 +36,8 @@ func divideString(s string, k int, fill byte) []string {
 
 
 /**
-QUESTION 1 - Two Sums - Easy
+QUESTION 1 - Two Sums 
+TAGS: Easy | Array
 
 nums = [7,11,2,15], target = 9
 Map[7:0, 11:1]
@@ -63,7 +65,8 @@ func TwoSum(nums []int, target int) []int {
 
 
 /**
-QUESION AE - IsValidSubquence - Easy
+QUESION AE - IsValidSubquence 
+TAGS: Easy | Array
 
 array
 [5 1 22 25 6 -1 8 10]
@@ -87,7 +90,8 @@ func IsValidSubsequence(array []int, sequence []int) bool {
 
 
 /**
-QUESTION 977 - Squares of a Sorted Array - Easy
+QUESTION 977 - Squares of a Sorted Array 
+TAGS: Easy | Array
 
 Input: nums = [-4,-1,0,3,10]
 Output: [0,1,9,16,100]
@@ -158,7 +162,8 @@ func reverse(nums []int) []int {
 
 
 /**
-QUESTION 2529 - Maximum Count of Positive Integer and Negative Integer - Easy
+QUESTION 2529 - Maximum Count of Positive Integer and Negative Integer 
+TAGS: Easy | Array
 
 Input: nums = [-4,-1,0,3,10]
 Output: [0,1,9,16,100]
