@@ -152,3 +152,97 @@ func MaximumCount(nums []int) int {
         return neg
     }
 }
+
+
+/** 
+QUESTION 485 - Max Consecutive Ones
+TAG: Easy
+
+Input: nums = [1,1,0,1,1,1]
+Output: 3
+
+- If value is one, increment counter
+- Else, evaluate max counter value and reset counter to zero
+
+**/
+func FindMaxConsecutiveOnes(nums []int) int {
+    maxOnes := 0
+    counter := 0
+
+    for _, value := range nums {
+        if value == 1 {
+            counter++
+        }else{
+            maxOnes = max(maxOnes, counter)
+            counter = 0
+        }
+    }
+
+    maxOnes = max(maxOnes, counter)
+    return maxOnes
+}
+
+func max(num1, num2 int) int{
+    if num1 >= num2 {
+        return num1
+    }
+    return num2
+}
+
+
+
+/**
+QUESTION 27. Remove Element
+TAGS: Easy
+
+Input: nums = [0,1,2,2,3,0,4,2], val = 2
+Output: 5, nums = [0,1,4,0,3,_,_,_]
+
+First Solution: O(N^2)
+The first pointer i finds val, then sends j to find the first non-val element it finds
+then swaps
+
+Second Solution: O(N)
+The pointer i here represents the current non-val position to filled
+The pointer j iterates through the list and finds valid values to put in these positions
+*/
+
+func RemoveElementSecond(nums []int, val int) int {
+    i := 0
+
+    for j :=0; j < len(nums); j++ {
+        if nums[j] != val {
+            nums[i], nums[j] = nums[j], nums[i]
+            i++
+        }
+    }
+    return i
+}
+
+func RemoveElementFirst(nums []int, val int) int {
+    i := 0
+    for i < len(nums) {
+        if nums[i] == val && i < len(nums) {
+            j := i + 1
+            for j < len(nums) && nums[j] == val {
+                j++
+            }
+            
+            if j < len(nums){
+                nums[i], nums[j] = nums[j], nums[i]
+            }else{
+                break
+            }
+        }
+        i++
+    }
+
+    count := 0
+    for _, value := range nums {
+        if value == val {
+            break
+        }
+        count++
+    }
+    return count
+}
