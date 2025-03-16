@@ -1,8 +1,9 @@
 package leetcode
 
 import (
-    "strings"
-    "unicode"
+	"sort"
+	"strings"
+	"unicode"
 )
 
 /**
@@ -79,4 +80,60 @@ func IsPalindrome2(s string) bool {
 
 func isAlphaNumericRune(value rune) bool{
     return unicode.IsLetter(value) || unicode.IsNumber(value)
+}
+
+
+/**
+QUESTION: 14. Longest Common Prefix
+TAGS: Easy
+
+Input: strs = ["flower","flow","flight"]
+Output: "fl"
+
+First Solution:
+Brute Force: We take the first string, since the longest substring will be within it
+We iterate over the characters and affirm it in other strings. 
+Runtime: O(nm) where n is length of strs, and m is length of substring
+
+Second Solution:
+Intuition: We sort strs, this will give us the most dissimilar characters at the end
+Then we find the most similar substring amidst the two.
+Runtime O(mlogn) where n is length of strs, and m is length of substring
+**/
+func LongestCommonPrefixFirst(strs []string) string {
+    firstString := strs[0]
+    if len(strs) == 1 {
+        return firstString
+    }
+
+    result := ""
+    for i:=1; i<=len(firstString); i++{
+        substring := firstString[0:i]
+
+        for _, str := range strs {
+            if !strings.HasPrefix(str, substring) {
+                return result
+            }
+        }
+        result = substring
+    }
+    return result
+}
+
+func LongestCommonPrefixSecond(strs []string) string {
+    strLength := len(strs)
+    if strLength == 1 {
+        return strs[0]
+    }
+
+    sort.Strings(strs)
+    
+    minLength := min(len(strs[0]), len(strs[strLength-1]))
+
+    for i:=0; i<minLength; i++{
+        if strs[0][i] != strs[strLength-1][i] {
+            return strs[0][:i]
+        }
+    }
+    return strs[0]
 }
