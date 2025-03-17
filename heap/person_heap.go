@@ -28,7 +28,7 @@ func (a *PersonList) Push(x interface{}) {
 
 func (a *PersonList) Pop() interface{} {
 	personList := *a
-	if personList == nil || len(personList) == 0 {
+	if len(personList) == 0 {
 		return nil
 	}
 
