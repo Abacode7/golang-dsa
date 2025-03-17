@@ -49,3 +49,4 @@ func TestFindIndexOfFirstOccurrenceInString(t *testing.T){
 		t.Error("remove elements should produce correct output 5")
 	}
 }
+
