@@ -137,3 +137,81 @@ func LongestCommonPrefixSecond(strs []string) string {
     }
     return strs[0]
 }
+
+
+
+/*
+QUESTION: 20. Valid Parentheses 
+TAG: Easy
+
+Input: s = "([])"
+Output: true
+
+We'll need a stack
+- if char is opening, add to stack
+- if char is closing, pop from stack and check if they are pairs
+
+*/
+func IsValidParentheses(s string) bool {
+    stack := make([]string, 0)
+
+    for i:=0; i<len(s); i++ {
+        currentChar := string(s[i])
+        if currentChar == "(" || currentChar == "{" || currentChar == "[" {
+            stack = append(stack, currentChar)
+        }else{
+            stackLength := len(stack)
+            if stackLength == 0 {return false}
+            poppedChar := stack[stackLength-1]
+            stack = stack[:stackLength-1]
+
+            if currentChar == ")" && poppedChar != "("{
+                return false
+            }
+            if currentChar == "}" && poppedChar != "{"{
+                return false
+            }
+            if currentChar == "]" && poppedChar != "["{
+                return false
+            }
+        }
+    }
+    return len(stack) == 0
+}
+
+
+
+/**
+QUESTION: 28. Find the Index of the First Occurrence in a String
+TAG: Easy
+
+Input: haystack = "sadbutsad", needle = "sad"
+Output: 0
+*/
+func FindIndexOfFirstOccurrenceInString(haystack string, needle string) int {
+    haystackLength := len(haystack)
+    needleLength := len(needle)
+    for i:=0; i<=haystackLength-needleLength; i++ {
+        if haystack[i:i+needleLength] == needle {
+            return i
+        }
+    }
+    return -1
+}
+
+
+
+/**
+QUESTION: 58. Length of Last Word
+TAG: Easy
+**/
+func LengthOfLastWord1(s string) int {
+    s = strings.Trim(s, " ")
+    sWords := strings.Split(s, " ")
+    return len(sWords[len(sWords)-1])
+}
+
+func LengthOfLastWord2(s string) int {
+    sWords := strings.Fields(s)
+    return len(sWords[len(sWords)-1])
+}

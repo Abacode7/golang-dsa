@@ -42,3 +42,10 @@ func TestRemoveElements(t *testing.T){
 		t.Error("remove elements should produce correct output 5")
 	}
 }
+
+func TestFindIndexOfFirstOccurrenceInString(t *testing.T){
+	result := FindIndexOfFirstOccurrenceInString("mississippi", "issip")
+	if result != 5 {
+		t.Error("remove elements should produce correct output 5")
+	}
+}
