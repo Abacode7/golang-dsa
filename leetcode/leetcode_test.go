@@ -50,3 +50,13 @@ func TestFindIndexOfFirstOccurrenceInString(t *testing.T){
 	}
 }
 
+func TestValidPath(t *testing.T){
+	edges := [][]int{{4, 3}, {1, 4}, {4, 8}, {1, 7}, {6, 4}, {4, 2}, {7, 4}, {4, 0}, {0, 9}, {5, 4}}
+	source := 5
+	destination := 9
+	result := ValidPathDFS(10, edges, source, destination)
+	if result != true {
+		t.Error("valid path dfs should return true")
+	}
+}
+

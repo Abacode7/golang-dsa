@@ -163,6 +163,42 @@ func ValidPathBFS(n int, edges [][]int, source int, destination int) bool {
 	return false
 }
 
+
+func ValidPathDFS(n int, edges [][]int, source int, destination int) bool {
+    if len(edges) == 0 {
+        return source == destination
+    }
+    graph := buildAdjacencyLists(edges)
+    visited := make(map[int]bool)
+    return dfs(graph, source, destination, visited)
+}
+
+func dfs(graph map[int][]int, source int, destination int, visited map[int]bool) bool {
+    if source == destination {return true}
+    visited[source] = true
+
+    for _, adjacent := range graph[source] {
+        if !visited[adjacent] {
+            if dfs(graph, adjacent, destination, visited) {return true};
+        }
+    }
+    return false;
+}
+
+func DfsIterative(graph map[int][]int, source int, destination int, visited map[int]bool) bool {
+    if source == destination {return true}
+    visited[source] = true
+
+    for _, adjacent := range graph[source] {
+        if !visited[adjacent] {
+            if dfs(graph, adjacent, destination, visited) {
+                return true
+            }
+        }
+    }
+    return false
+}
+
 func buildAdjacencyLists(edges [][]int) map[int][]int {
 	graph := make(map[int][]int)
 	for _, edge := range edges {
