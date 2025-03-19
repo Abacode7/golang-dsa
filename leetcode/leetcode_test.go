@@ -1,6 +1,7 @@
 package leetcode
 
 import (
+	"fmt"
 	"testing"
 )
 
@@ -57,6 +58,31 @@ func TestValidPath(t *testing.T){
 	result := ValidPathDFS(10, edges, source, destination)
 	if result != true {
 		t.Error("valid path dfs should return true")
+	}
+}
+
+func TestTreeTraversal(t *testing.T){
+	/**
+				8
+			6		7
+		2	nil	  3		5
+	1  nil		
+	**/
+
+	tree := TreeNode{8, &TreeNode{6, &TreeNode{2, &TreeNode{1, nil, nil}, nil}, nil}, &TreeNode{7, &TreeNode{3, nil, nil}, &TreeNode{5, nil, nil}}}
+	result := TreeInorderTraversal(&tree)
+	if result != nil {
+		fmt.Printf("inorder traversal result: %v\n", result)
+	}
+
+	result1 := TreePreorderTraversal(&tree)
+	if result1 != nil {
+		fmt.Printf("preorder traversal result: %v\n", result1)
+	}
+
+	result2 := TreePostorderTraversal(&tree)
+	if result2 != nil {
+		fmt.Printf("postorder traversal result: %v\n", result2)
 	}
 }
 
