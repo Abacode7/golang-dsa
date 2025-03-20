@@ -85,3 +85,56 @@ func PostorderTraversal(root *TreeNode, result *[]int){
 
 	*result = append(*result, root.Val)
 }
+
+
+
+/**
+QUESTION: 100. Same Tree
+TAG: Easy
+
+Input: p = [1,2,3], q = [1,2,3]
+Output: true
+Input: p = [1,2], q = [1,null,2]
+Output: false
+*/
+func IsSameTree(p *TreeNode, q *TreeNode) bool {
+    return preorderTraversal(p, q)
+}
+
+func preorderTraversal(p, q *TreeNode) bool {
+    if p == nil  && q == nil {
+        return true
+    }else if (p == nil && q != nil) || (p != nil && q == nil) {
+        return false
+    }else {
+        if p.Val != q.Val {return false}
+    }
+    return preorderTraversal(p.Left, q.Left) && preorderTraversal(p.Right, q.Right)
+}
+
+
+
+/**
+QUESTION: 101. Symmetric Tree
+TAG: Easy
+
+Input: root = [1,2,2,3,4,4,3]
+Output: true
+Input: root = [1,2,2,null,3,null,3]
+Output: false
+*/
+func IsSymmetric(root *TreeNode) bool {
+    if root == nil {return true}
+    return traverse(root.Left, root.Right)
+}
+
+func traverse(leftNode, rightNode *TreeNode) bool {
+    if leftNode == nil && rightNode == nil {return true}
+
+    if leftNode == nil || rightNode == nil {
+        return false
+    }else{
+        if leftNode.Val != rightNode.Val {return false}
+    }
+    return traverse(leftNode.Left, rightNode.Right) && traverse(leftNode.Right, rightNode.Left)
+}
