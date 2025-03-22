@@ -63,13 +63,14 @@ func TestValidPath(t *testing.T){
 
 func TestTreeTraversal(t *testing.T){
 	/**
-				8
-			6		7
-		2	nil	  3		5
+	Binary Search Tree
+				5
+			3		7
+		2	4	  6		8
 	1  nil		
 	**/
 
-	tree := TreeNode{8, &TreeNode{6, &TreeNode{2, &TreeNode{1, nil, nil}, nil}, nil}, &TreeNode{7, &TreeNode{3, nil, nil}, &TreeNode{5, nil, nil}}}
+	tree := TreeNode{5, &TreeNode{3, &TreeNode{2, &TreeNode{1, nil, nil}, nil}, &TreeNode{4, nil, nil}}, &TreeNode{7, &TreeNode{6, nil, nil}, &TreeNode{8, nil, nil}}}
 	result := TreeInorderTraversal(&tree)
 	if result != nil {
 		fmt.Printf("inorder traversal result: %v\n", result)
